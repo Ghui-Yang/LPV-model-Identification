@@ -1,26 +1,26 @@
 clear;clc;
-% 第一个测试周期
+
 Tsw = 35;
 N_1 = 500;
 U_1 = gbngen(N_1,Tsw);
 w_1 = ones(N_1,1);
-% 第二个测试周期
+
 N_2 = 1500;
 U_2 = gbngen(N_2,Tsw);
 w_2 = linspace(1,2.25,N_2)';
-% 第三个测试周期
+
 N_3 = 500;
 U_3 = gbngen(N_3,Tsw);
 w_3 = 2.25*ones(N_1,1);
-% 第四个测试周期
+
 N_4 = 1500;
 U_4 = gbngen(N_4,Tsw);
 w_4 = linspace(2.25,4,N_4)';
-% 第五个测试周期
+
 N_5 = 500;
 U_5 = gbngen(N_5,Tsw);
 w_5 = 4*ones(N_5,1);
-% 激励系统产生Y
+
 da_Num = N_1+N_2+N_3+N_4+N_5;
 U = [U_1;U_2;U_3;U_4;U_5];
 W = [w_1;w_2;w_3;w_4;w_5];
@@ -31,7 +31,7 @@ for i = 1:da_Num
 end
 Y = Y(1:da_Num,1);
 
-% THoe01 = oe([Y(2001:2500,1),U_1],[1,1,1]); 得出的结果和w=2.25时离散化后的模型是一样的
+% THoe01 = oe([Y(2001:2500,1),U_1],[1,1,1]); 
 
 %% model Identification
 phi_1 = [];
@@ -45,7 +45,7 @@ phi_2 = phi_1;
 phi_3 = phi_1;
 Total_data = 4500;
 
-y1_hat =  Get_yhat(1,U);  % 以下三行用全部测试的U,得出每一个工作点模型的4500个Y
+y1_hat =  Get_yhat(1,U);
 y2_hat =  Get_yhat(2.25,U);
 y3_hat =  Get_yhat(4,U);
 
@@ -68,7 +68,7 @@ figure(1);
 plot(w_step,alpha_1,'-b',w_step,alpha_2,'--k',w_step,alpha_3,'-.r');
 legend('Alpha_1','Alpha_2','Alpha_3')
 
-%% 画阶跃响应
+
 figure(2);
 Nsim = 150;
 True_STP = Get_stepresponse(1.5,Nsim);

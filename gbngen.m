@@ -8,7 +8,7 @@ function U = gbngen(N,Tsw,~)
     end
     rng('default')
     R = rand(N,1);
-    if R(1) > 0.1
+    if R(1) > 0.5
         P_M = 1;
     else
         P_M = -1;

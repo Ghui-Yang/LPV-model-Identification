@@ -1,5 +1,4 @@
 function [w_x_1l,w_x_2l,w_x_3l] = Trivial_Interpolation(w_x)
-%UNTITLED5 计算线性插值权重
     if w_x <= 1
         w_x_1l = 1; 
         w_x_2l = 0;
